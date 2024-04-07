@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up - Yoga Paradise Studio</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/style.css' %}">
+    <!-- Add any additional CSS files as needed -->
+
+    <style>
+        /* You can add any additional inline CSS styles here */
+    </style>
+
+</head>
+<body>
+<div class="main">
+    <div class="bg-img"></div>
+    <!--==============================header=================================-->
+    <header>
+        <h1><a href="{% url 'index' %}">Yoga Paradise  <strong>Studio.</strong></a></h1>
+        <!-- Navigation menu -->
+        <!-- Include navigation menu from your original code -->
+    </header>
+    <!--==============================content================================-->
+    <section id="content">
+        <div class="grid_12 top-1">
+            <div class="block-1 box-shadow">
+                <!-- Signup Form -->
+                <form method="post">
+                    {% csrf_token %}
+                    <h2>Sign Up</h2>
+                    <div class="form-group">
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password1.label_tag }}
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password2.label_tag }}
+                        {{ form.password2 }}
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--==============================footer=================================-->
+    <footer>
+        <p>© 2024 Yoga Paradise Studio </p>
+    </footer>
+</div>
+</body>
+</html>

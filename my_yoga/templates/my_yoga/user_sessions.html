@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Sessions</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'my_yoga/css/style.css' %}">
+    <style>
+        /* Add your custom CSS styles here */
+        /* Example styles for the delete button */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+        p {
+            margin: 0;
+        }
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .delete-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2><a href="{% url 'index' %}">Your Sessions</a></h2>
+        {% if user_sessions %}
+            <ul>
+                {% for session in user_sessions %}
+                    <li>
+                        <p>{{ session.timetable_entry.day }} - {{ session.timetable_entry.time }} - {{ session.timetable_entry.yoga_type }}</p>
+                        <p>Full Name: {{ session.full_name }}</p>
+                        <p>Email: {{ session.email }}</p>
+                        <p>Phone: {{ session.phone }}</p>
+                        <p>Additional Notes: {{ session.additional_notes }}</p>
+                        <!-- Delete button form -->
+                        <form action="{% url 'delete_session' session.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="delete-button" type="submit">Delete</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No sessions booked yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

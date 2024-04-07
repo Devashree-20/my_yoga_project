@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Yoga Paradise Studio | Book Session</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/grid_12.css' %}">
+    <style>
+        /* Additional styles specific to the book_session.html */
+        /* You can add more styles as needed */
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .session-info {
+            margin-bottom: 20px;
+        }
+        .session-info p {
+            margin: 5px 0;
+        }
+        .book-form {
+            margin-top: 20px;
+        }
+        .book-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333; /* Added color for labels */
+        }
+        .book-form input[type="text"],
+        .book-form input[type="email"],
+        .book-form textarea {
+            width: calc(100% - 22px); /* Adjusted width to accommodate border and padding */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .book-form textarea {
+            height: 100px; /* Increased height for textarea */
+        }
+        .book-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer; /* Added cursor style */
+        }
+        .book-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Book Session</h2>
+        <div class="session-info">
+            <p><strong>Day:</strong> {{ timetable_entry.day }}</p>
+            <p><strong>Time:</strong> {{ timetable_entry.time }}</p>
+            <p><strong>Type:</strong> {{ timetable_entry.yoga_type }}</p>
+        </div>
+        <form class="book-form" method="post" action="{% url 'book_session' timetable_entry_id=timetable_entry.id %}">
+            {% csrf_token %}
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+            <label for="additional_notes">Additional Notes:</label>
+            <textarea id="additional_notes" name="additional_notes"></textarea>
+            <button type="submit" class="book-button">Confirm Booking</button>
+        </form>
+    </div>
+</body>
+
+</html>

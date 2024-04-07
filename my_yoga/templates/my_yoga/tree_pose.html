@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Tree Pose (Vrikshasana) | Yoga Paradise Studio</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/reset.css' %}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/style.css' %}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/grid_12.css' %}">
+<script src="{% static 'my_yoga/js/jquery-1.7.min.js' %}"></script>
+<script src="{% static 'my_yoga/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'my_yoga/js/cufon-yui.js' %}"></script>
+<script src="{% static 'my_yoga/js/Asap_400.font.js' %}"></script>
+<script src="{% static 'my_yoga/js/Coolvetica_400.font.js' %}"></script>
+<script src="{% static 'my_yoga/js/Kozuka_M_500.font.js' %}"></script>
+<script src="{% static 'my_yoga/js/cufon-replace.js' %}"></script>
+<script src="{% static 'my_yoga/js/FF-cash.js' %}"></script>
+</head>
+
+<body>
+<div class="main">
+  <div class="bg-img"></div>
+  <!--==============================header=================================-->
+  <header>
+    <h1><a href="{% url 'index' %}">Yoga<strong>Therapy</strong></a></h1>
+    <nav>
+      <div class="social-icons"> <a href="#" class="icon-2"></a> <a href="#" class="icon-1"></a> </div>
+      <ul class="menu">
+        <li><a href="{% url 'index' %}">About</a></li>
+        <li><a href="{% url 'trainings' %}">Yoga Therapy</a></li>
+        <li><a href="{% url 'timetable' %}">Timetable</a></li>
+        <li><a href="{% url 'nutrition' %}">Nutrition</a></li>
+        <li><a href="{% url 'contacts' %}">Contacts</a></li>
+      </ul>
+    </nav>
+  </header>
+          <!--==============================content================================-->
+     <!--==============================content================================-->
+        <section id="content">
+            <div class="container_12">
+                <div class="grid_12">
+                    <div class="box-shadow">
+                        <div class="wrap block-2">
+                            <div class="col-1">
+                                <h2 class="p3"><span class="color-1">Tree Pose (Vrikshasana)</span></h2>
+                                <p class="p2"><strong>Vrikshasana, or Tree Pose, is a standing yoga pose that improves balance, concentration, and strengthens the legs, ankles, and core muscles.</strong></p>
+                                <div class="wrap box-1">
+                                    <img src="https://x23155906-my-yoga.s3.eu-west-1.amazonaws.com/images/tree_pose.jpeg" alt="tree_pose" width="290" height="200" class="img-border img-indent">
+                                    <div class="extra-wrap">
+                                        <h3 class="p2"><strong>Steps:</strong></h3>
+                                            <ol class="list-2">
+                                                <li><strong>1. </strong>Stand tall with your feet hip-width apart and arms by your sides.</li>
+                                                <li><strong>2. </strong>Shift your weight onto your left foot and lift your right foot off the ground.</li>
+                                                <li><strong>3. </strong>Place the sole of your right foot against the inner left thigh or calf, avoiding the knee.</li>
+                                                <li><strong>4. </strong>Bring your hands together in front of your chest in a prayer position or extend them overhead.</li>
+                                                <li><strong>5. </strong>Gaze softly at a fixed point to help maintain balance.</li>
+                                                <li><strong>6. </strong>Hold the pose for several breaths, then repeat on the other side.</li>
+                                            </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </section>
+        <!--==============================footer=================================-->
+        <footer>
+            <p>© 2024 Yoga Paradise Studio</p>
+        </footer>
+    </div>
+</body>
+
+</html>

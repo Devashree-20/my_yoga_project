@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Yoga Paradise Studio | Timetable</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'my_yoga/css/grid_12.css' %}">
+    <script src="{% static 'my_yoga/js/jquery-1.7.min.js' %}"></script>
+    <script src="{% static 'my_yoga/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'my_yoga/js/cufon-yui.js' %}"></script>
+    <script src="{% static 'my_yoga/js/Asap_400.font.js' %}"></script>
+    <script src="{% static 'my_yoga/js/Coolvetica_400.font.js' %}"></script>
+    <script src="{% static 'my_yoga/js/Kozuka_M_500.font.js' %}"></script>
+    <script src="{% static 'my_yoga/js/cufon-replace.js' %}"></script>
+    <script src="{% static 'my_yoga/js/FF-cash.js' %}"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="bg-img"></div>
+        <!--==============================header=================================-->
+        <header>
+            <h1><a href="{% url 'index' %}">Yoga Paradise <strong>Studio.</strong></a></h1>
+            <nav>
+                <div class="social-icons"> <a href="#" class="icon-2"></a> <a href="#" class="icon-1"></a> </div>
+                <ul class="menu">
+                    <li><a href="{% url 'index' %}">About</a></li>
+                    <li><a href="{% url 'trainings' %}">Yoga Therapy</a></li>
+                    <li class="current"><a href="{% url 'timetable' %}">Timetable</a></li>
+                    <li><a href="{% url 'nutrition' %}">Nutrition</a></li>
+                    <li><a href="{% url 'contacts' %}">Contacts</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        <li><a href="#">{{ user.username }}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        <!--==============================content================================-->
+        <section id="content">
+            <div class="container_12">
+                <div class="grid_12">
+                    <div class="box-shadow">
+                        <div class="wrap block-2">
+                            <div class="col-1">
+                                <h2 class="p3" style="color: #000000;"><span class="color-1">Our</span> Timetable</h2>
+                                <div class="wrap box-2 border-1">
+                                    {% for entry in timetable_entries %}
+                                    <div>
+                                        <p><strong>{{ entry.day }}</strong></p>
+                                        <p class="color-1">{{ entry.time }}</p>
+                                        <p>{{ entry.yoga_type }}</p>
+                                        {% if user.is_authenticated %}
+                                            <!-- Add the "Book Now" button -->
+                                            <a href="{% url 'book_session' timetable_entry_id=entry.id %}" class="book-now-button">Book Now</a>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==============================footer=================================-->
+        <footer>
+            <p>© 2024 Yoga Paradise Studio</p>
+        </footer>
+    </div>
+</body>
+
+</html>
