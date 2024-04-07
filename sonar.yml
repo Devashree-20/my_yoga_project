@@ -16,7 +16,7 @@ phases:
     commands:
       - set -e
       - export SONAR_SCANNER_OPTS="-Xmx2g" # Set maximum heap size to 2GB
-      - sonar-scanner -X -Dsonar.login=8d3910a7edaaa77933821e830887fb68a3664313 -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=Devashree-20_Yoga -Dsonar.organization=devashree -DgeneratePom=true -Dsonar.exclusions=**/site-packages/**
+      - sonar-scanner -X -Dsonar.login=8d3910a7edaaa77933821e830887fb68a3664313 -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=Devashree-20_my_yoga_project -Dsonar.organization=devashree -DgeneratePom=true -Dsonar.exclusions=**/site-packages/**
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=Devashree-20_Yoga >result.json
       - cat result.json
