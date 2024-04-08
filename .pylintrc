@@ -1,0 +1,2 @@
+[MESSAGES CONTROL]# Disable snake_case naming convention
+disable=C0103
